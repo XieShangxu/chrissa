@@ -40,7 +40,8 @@ module.exports = {
       textShadow: {
         'sm': '0 1px 2px rgba(0, 0, 0, 0.5)',
         'md': '0 2px 4px rgba(0, 0, 0, 0.5)',
-        'lg': '0 4px 8px rgba(0, 0, 0, 0.5)',
+        'lg': '0 2px 10px rgba(0, 0, 0, 0.8)',
+        'xl': '0 4px 15px rgba(0, 0, 0, 0.9)',
       },
     },
   },
@@ -54,7 +55,10 @@ module.exports = {
           'text-shadow': '0 2px 4px rgba(0, 0, 0, 0.5)',
         },
         '.text-shadow-lg': {
-          'text-shadow': '0 4px 8px rgba(0, 0, 0, 0.5)',
+          'text-shadow': '0 2px 10px rgba(0, 0, 0, 0.8)',
+        },
+        '.text-shadow-xl': {
+          'text-shadow': '0 4px 15px rgba(0, 0, 0, 0.9)',
         },
         '.text-shadow-none': {
           'text-shadow': 'none',
