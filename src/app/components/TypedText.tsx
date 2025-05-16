@@ -11,6 +11,8 @@ interface TypedTextProps {
   startDelay?: number;
   loop?: boolean;
   className?: string;
+  showCursor?: boolean;
+  hideCursorAfterTyping?: boolean;
 }
 
 const TypedText: React.FC<TypedTextProps> = ({
@@ -21,6 +23,8 @@ const TypedText: React.FC<TypedTextProps> = ({
   startDelay = 300,
   loop = false,
   className = "",
+  showCursor = true,
+  hideCursorAfterTyping = false,
 }) => {
   const el = useRef<HTMLSpanElement>(null);
   const typed = useRef<Typed | null>(null);
@@ -35,15 +39,32 @@ const TypedText: React.FC<TypedTextProps> = ({
         startDelay,
         loop,
         cursorChar: "|",
-        showCursor: true,
+        showCursor,
         autoInsertCss: true,
+        onComplete: (self) => {
+          if (hideCursorAfterTyping) {
+            const cursor = document.querySelector(".typed-cursor");
+            if (cursor) {
+              cursor.classList.add("typed-cursor--hide");
+            }
+          }
+        },
       });
     }
 
     return () => {
       typed.current?.destroy();
     };
-  }, [strings, typeSpeed, backSpeed, backDelay, startDelay, loop]);
+  }, [
+    strings,
+    typeSpeed,
+    backSpeed,
+    backDelay,
+    startDelay,
+    loop,
+    showCursor,
+    hideCursorAfterTyping,
+  ]);
 
   return <span className={className} ref={el} />;
 };

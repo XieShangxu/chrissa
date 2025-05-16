@@ -78,4 +78,10 @@
   100% {
     opacity: 1;
   }
+}
+
+/* Add to your existing CSS */
+.typed-cursor--hide {
+  opacity: 0 !important;
+  transition: opacity 0.3s ease;
 } 
